@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/pokemon/pokemon-index.css' %}"/>
+{% endblock %}
+{% block content %}
+
+<section class="page-header">
+  <h1>Pokemon List</h1>
+  <img src="{{ pokemon_list.0.sprite_url }}" alt="Pikachu" />
+  <img src="{{ pokemon_list.1.sprite_url }}" alt="Charizard" />
+  <img src="{{ pokemon_list.2.sprite_url }}" alt="Bulbasaur" />
+  <img src="{{ pokemon_list.3.sprite_url }}" alt="Squirtle" />
+  <img src="{{ pokemon_list.4.sprite_url }}" alt="Jigglypuff" />
+</section>
+
+<section class="card-container">
+  {% for poke in pokemon_list %}
+    <div class="card">
+      <div class="card-content">
+        <div class="card-img-container">
+          <img
+            src="{{ poke.sprite_url }}"
+            alt="Image of {{ poke.name }}"
+          />
+        </div>
+        <h2 class="card-title">{{ poke.name }}</h2>
+        {% if poke.level > 0 %}
+        <p>A level {{ poke.level }} {{ poke.type_ }}</p>
+        {% else %}
+        <p>A {{ poke.type_ }} type Pokémon.</p>
+        {% endif %}
+        <p><small>{{ poke.description }}</small></p>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
