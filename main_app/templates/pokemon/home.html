@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %} {% block content %}
+
+<section class="logo-container">
+  <div class="cat-container">
+    {% comment %} TODO: Add Pokemon Collector Logo {% endcomment %}
+    <img src="{% static 'images/cats/splash.svg' %}" alt="TODO: The Pokemon Collector" />
+  </div>
+  {% comment %} TODO: Add Pokemon Images {% endcomment %}
+  <img
+    src="{% static 'images/cats/logotype.svg' %}"
+    alt="TODO: Add Pokemon Collector Logo"
+  />
+</section>
+
+{% endblock %}
