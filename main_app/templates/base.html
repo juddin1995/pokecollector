@@ -1,14 +1,16 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="" />
-    <title>Pokemon Collector</title>
+    {% comment %} 
+    TODO: update Favicon
+    {% endcomment %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/poke-ball.png' %}" />
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <title>Poke Collector</title>
     {% block head %} 
     {% endblock %}
   </head>
@@ -16,13 +18,14 @@
     <header>
       <div class="header-logo-container">
         <a href="/">
-          <img src="{% static 'images/poke-ball.png'%}" alt="The Pokemon Collector Logo" />
+          <img src="{% static 'images/pokemon/Poke-Collector-Top-Banner.png' %}" alt="The Poke Collector Logo" /> 
         </a>
       </div>
       <nav>
         <ul>
-          <li><a href="/pokemon">All Pokemon</a></li>
-          <li><a href="/about">About</a></li>
+            <li><a href="/pokemon">Generate Random Pokemon</a></li>
+            <li>|<li/>
+            <li><a href="/about">About</a></li>
         </ul>
       </nav>
     </header>
@@ -32,3 +35,4 @@
      </main>
   </body>
 </html>
+

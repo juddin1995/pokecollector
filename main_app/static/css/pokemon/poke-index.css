@@ -8,13 +8,23 @@
 .card {
   width: 275px;
   margin: 10px;
-  border: var(--borders);
+  border-radius: 12px;
+  background-color: rgba(204, 215, 228, 0.521);
   box-shadow: var(--card-box-shadow);
 }
 
 .card-content {
   padding: 10px;
   width: 100%;
+}
+
+.card-img-container{
+  width: 100%;
+}
+
+.card-img-container > img{
+  width: 100%;
+  object-fit: cover;
 }
 
 .usr-img {

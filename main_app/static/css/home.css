@@ -4,6 +4,7 @@ main {
   justify-content: center;
   flex-wrap: wrap;
   height: 100%;
+  background: radial-gradient(circle at center, #ffde00, #ffde00, #ffcb05, #ffcb05); /* Pokémon yellow background */
 }
 
 main > section {
@@ -23,21 +24,35 @@ main > section {
   max-width: 375px;
 }
 
-.cat-container {
+.poke-container {
   width: 80%;
 }
 
+/* Style for the login section mimicking Pokémon card */
 .login {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 80%;
+  padding: 20px;
+  background-color: #fff; /* Card background */
+  border: 4px solid #fdd835; /* Yellow border like Pokémon card */
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.login:hover {
+  transform: translateY(-8px); /* Hover effect like lifting the card */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
 }
 
 .login h1 {
   font-size: clamp(3.2rem, 3vw, 4.8rem);
   margin: 10px 0;
+  color: #ff3d00; /* Pokémon-themed red text */
+  text-shadow: 1px 1px #333; /* Slight shadow for better readability */
 }
 
 .login > p {
@@ -50,17 +65,40 @@ main > section {
 .login label {
   font-size: var(--font-reg);
   margin-bottom: 6px;
+  color: #3b4cca; /* Pokémon blue for the label text */
 }
 
 .login input {
   font-size: var(--font-l);
-  padding: 2px 4px;
+  padding: 6px 10px;
+  border: 2px solid #3b4cca;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.login input:focus {
+  border-color: #ff3d00; /* Pokémon red for input focus */
 }
 
 .login .btn {
   align-self: flex-end;
   margin-right: 0;
   margin-top: 16px;
+  background-color: #ff3d00; /* Pokémon red for button */
+  color: #fff;
+  border: 2px solid #ff3d00;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: var(--font-l);
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.login .btn:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+  border-color: #d32f2f;
 }
 
 @media only screen and (min-width: 768px) {
@@ -73,11 +111,9 @@ main > section {
   }
 
   .login {
-    border: var(--borders);
     padding: 20px;
-    border-radius: var(--card-border-radius);
-    box-shadow: var(--card-box-shadow);
     width: 100%;
+    max-width: 400px; /* Ensure card doesn't grow too large on bigger screens */
   }
 
   .logo-container {
