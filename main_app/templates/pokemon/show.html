@@ -6,7 +6,7 @@
 {% block content %}
 
 <section class="page-header">
-  <h1>Caught Pokémon</h1>
+  <h1>Your Pokémon Roster</h1>
 </section>
 
 <section class="card-container">
@@ -26,6 +26,10 @@
           <p><strong>Abilities:</strong> {{ poke.abilities }}</p>
         </div>
       </a>
+      <form action="{% url 'pokemon-delete' poke.pk %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="delete-button">Delete</button>
+      </form>
     </div>
   {% endfor %}
 </section>

@@ -2,6 +2,8 @@ import random
 import requests
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
 from .models import Pokemon
 
 def home(request):
@@ -89,3 +91,8 @@ def catch_pokemon(request, poke_id):
 def show_pokemon(request):
     pokemon = Pokemon.objects.all()
     return render(request, 'pokemon/show.html', {'pokemon': pokemon})
+
+class PokemonDeleteView(DeleteView):
+    model = Pokemon
+    success_url = reverse_lazy('show-pokemon')
+    template_name = 'pokemon_confirm_delete.html'
