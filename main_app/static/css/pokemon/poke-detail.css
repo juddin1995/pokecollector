@@ -40,7 +40,8 @@ strong {
 p {
   margin: 5px 0;
   color: #333;
-  font-size: 1.2rem;
+  margin-bottom: 1vmin;
+  font-size: 14px;
 }
 
 .pokemon-card:hover {
