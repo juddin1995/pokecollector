@@ -21,6 +21,7 @@
             />
           </div>
           <h2 class="card-title">{{ poke.name }}</h2>
+          <p><strong>Nickname:</strong> {{ poke.nickname }}</p>
           <p><strong>Experience:</strong> {{ poke.xp }}</p>
           <p><strong>Type:</strong> {{ poke.type }}</p>
           <p><strong>Abilities:</strong> {{ poke.abilities }}</p>
@@ -30,6 +31,7 @@
         {% csrf_token %}
         <button type="submit" class="delete-button">Delete</button>
       </form>
+      <a href="{% url 'update-nickname' poke.poke_id %}">Update Nickname</a>
     </div>
   {% endfor %}
 </section>

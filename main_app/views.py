@@ -1,10 +1,11 @@
 import random
 import requests
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from .models import Pokemon
+from .forms import PokemonNicknameForm
 
 def home(request):
     return render(request, 'home.html')
@@ -95,4 +96,19 @@ def show_pokemon(request):
 class PokemonDeleteView(DeleteView):
     model = Pokemon
     success_url = reverse_lazy('show-pokemon')
-    template_name = 'pokemon_confirm_delete.html'
+
+def update_nickname(request, poke_id):
+    try:
+        pokemon = Pokemon.objects.get(poke_id=poke_id)
+    except Pokemon.DoesNotExist:
+        return HttpResponseNotFound("Pokemon not found")
+
+    if request.method == 'POST':
+        form = PokemonNicknameForm(request.POST, instance=pokemon)
+        if form.is_valid():
+            form.save()
+            return redirect('show-pokemon')
+    else:
+        form = PokemonNicknameForm(instance=pokemon)
+
+    return render(request, 'pokemon/update_nickname.html', {'form': form, 'pokemon': pokemon})
