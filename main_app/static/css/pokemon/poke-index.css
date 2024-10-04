@@ -1,3 +1,8 @@
+.roster-header {
+  text-align: center;
+  font-size: 2rem;
+}
+
 .card-container {
   padding: 0 30px;
   display: flex;
