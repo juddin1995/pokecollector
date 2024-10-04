@@ -44,10 +44,11 @@ def poke_detail(request, poke_id):
     try:
         pokemon = Pokemon.objects.get(poke_id=poke_id)
         feeding_form = FeedingForm()
+        items_pokemon_doesnt_have = Item.objects.exclude(id__in=pokemon.items.all().values_list('id'))
     except Pokemon.DoesNotExist:
         return HttpResponseNotFound("Pokemon not found")
 
-    return render(request, 'pokemon/detail.html', {'pokemon': pokemon, 'feeding_form': feeding_form})
+    return render(request, 'pokemon/detail.html', {'pokemon': pokemon, 'feeding_form': feeding_form, 'items': items_pokemon_doesnt_have})
 
 def catch_pokemon(request, poke_id):
     response = requests.get(f'https://pokeapi.co/api/v2/pokemon/{poke_id}/')
@@ -134,3 +135,11 @@ class ItemUpdate(UpdateView):
 class ItemDelete(DeleteView):
     model = Item
     success_url = reverse_lazy('item-index')
+
+def assoc_item(request, item_id, poke_id):
+    Pokemon.objects.get(poke_id=poke_id).items.add(item_id)
+    return redirect('poke-detail', poke_id=poke_id)
+
+def remove_item(request, item_id, poke_id):
+    Pokemon.objects.get(poke_id=poke_id).items.remove(item_id)
+    return redirect('poke-detail', poke_id=poke_id)

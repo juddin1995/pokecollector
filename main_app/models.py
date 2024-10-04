@@ -19,7 +19,7 @@ class Item(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('item-detail', kwargs={'item_id': self.id})
+        return reverse('item-detail', kwargs={'pk': self.pk})
 
 class Pokemon(models.Model):
     name = models.CharField(max_length=100)
@@ -29,6 +29,7 @@ class Pokemon(models.Model):
     abilities = models.TextField()
     image_url = models.URLField()
     nickname = models.CharField(max_length=100, blank=True, null=True)
+    items = models.ManyToManyField(Item)
 
     def __str__(self):
         return f'{self.name} - {self.id}'

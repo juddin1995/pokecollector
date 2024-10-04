@@ -16,4 +16,6 @@ urlpatterns = [
     path('items/', views.ItemList.as_view(), name='item-index'),
     path('items/<int:pk>/update/', views.ItemUpdate.as_view(), name='item-update'),
     path('items/<int:pk>/delete/', views.ItemDelete.as_view(), name='item-delete'),
+    path('items/<int:poke_id>/assoc-item/<int:item_id>/', views.assoc_item, name='assoc-item'),
+    path('pokemon/<int:poke_id>/remove-item/<int:item_id>', views.remove_item, name='remove-item'),
 ]
